@@ -1,8 +1,0 @@
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>SocialSecurity_Domain</RootNamespace>
-  </PropertyGroup>
-
-</Project>
