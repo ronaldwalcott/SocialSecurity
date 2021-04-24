@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +15,31 @@ namespace SocialSecurityAPI
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var builder = CreateHostBuilder(args).Build();
+            var logger = builder.Services.GetService<ILogger<Program>>();
+            try
+            {
+                logger.LogInformation("Starting web host");
+                builder.Run();
+            }
+            catch (Exception ex)
+            {
+                logger.LogCritical(ex, "Host unexpectedly terminated");
+            }
+
+            //CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+                .ConfigureHostConfiguration(configBuilder =>
+                    configBuilder.AddJsonFile("appsettings.Logs.json", true, true)
+                ).ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+                .UseSerilog((hostingContext, loggerConfig) =>
+                    loggerConfig.ReadFrom.Configuration(hostingContext.Configuration)
+                );
     }
 }
