@@ -43,7 +43,7 @@ namespace SocialSecurityAPI
             services.AddControllers();
 
             //Odata
-           services.AddOData();
+            services.AddOData();
 
             services.AddSwaggerGen(c =>
             {
