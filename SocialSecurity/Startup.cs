@@ -21,6 +21,7 @@ using System.Linq;
 using Microsoft.Net.Http.Headers;
 
 using System.Threading.Tasks;
+using SocialSecurityAPI.Helpers;
 
 namespace SocialSecurityAPI
 {
@@ -39,6 +40,19 @@ namespace SocialSecurityAPI
             services.AddDbContext<SocialSecurityDbContext>(options =>
                 options.UseSqlServer(
                 Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddSingleton<IDateTimeUtc, SystemDateTimeUtc>();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+            });
 
             services.AddControllers();
 

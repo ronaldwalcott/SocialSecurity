@@ -5,4 +5,28 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<ejs-calendar id="calendar2"></ejs-calendar>
 </div>
+
+
+    <div class=" control-section">
+        <div class="calender-section">
+            <div id="calender-control">
+                <ejs-calendar id="calendar" change="valueChange"></ejs-calendar>
+                <br>
+                <span id="date_label"> Selected Value: </span>
+            </div>
+        </div>
+    </div>
+
+
+
+<script>
+    function valueChange(args) {
+    /*Displays selected date in the label*/
+        var intl = new ej.base.Internationalization();
+        var value = intl.formatDate(args.value, { type: 'dateTime', format: 'dd/MM/yyyy' });
+        (document.getElementById('date_label')).textContent = 'Selected Value: ' + value;
+    }
+</script>
