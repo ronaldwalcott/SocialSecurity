@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SocialSecurity.Data.EFClasses.BaseClasses;
 using SocialSecurity.Domain.Constants;
 
-namespace SocialSecurity.Domain.Models
+namespace SocialSecurity.Domain.Actions
 {
     public class PostGeneralTableData 
     {

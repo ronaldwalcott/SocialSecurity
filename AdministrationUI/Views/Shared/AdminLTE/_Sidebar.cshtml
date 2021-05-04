@@ -44,7 +44,7 @@
                     </a>
                 </div>
             </div>
-        }
+        @*}*@
 
 
         <!-- Sidebar Menu -->
@@ -78,11 +78,12 @@
                     </p>
                 </a>
 
+
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="Country" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Collections" asp-route-apicall="TableCollections" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
-                            <p>Country</p>
+                            <p>Collection</p>
                         </a>
                     </li>
                 </ul>
@@ -90,14 +91,13 @@
                     <li class="nav-item">
                         <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Countries" asp-route-apicall="TableCountries" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
-                            <p>Country 2</p>
+                            <p>Country</p>
                         </a>
                     </li>
                 </ul>
-
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="District" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Districts" asp-route-apicall="TableDistricts" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>District</p>
                         </a>
@@ -105,7 +105,7 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="DocumentType" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="DocumentTypes" asp-route-apicall="TableDocumentTypes" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>Document Type</p>
                         </a>
@@ -113,7 +113,23 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="MaritalStatus" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="EmploymentTypes" asp-route-apicall="TableEmploymentTypes" class="nav-link">
+                            <i class="fas fa-edit nav-icon"></i>
+                            <p>Employment Type</p>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Industries" asp-route-apicall="TableIndustries" class="nav-link">
+                            <i class="fas fa-edit nav-icon"></i>
+                            <p>Industry</p>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Marital Statuses" asp-route-apicall="TableMaritalStatuses" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>Marital Status</p>
                         </a>
@@ -121,7 +137,7 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="Nationality" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Nationalities" asp-route-apicall="TableNationalities" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>Nationality</p>
                         </a>
@@ -129,7 +145,7 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="Occupation" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Occupations" asp-route-apicall="TableOccupations" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>Occupation</p>
                         </a>
@@ -137,7 +153,7 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="Parish" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Parishes" asp-route-apicall="TableParishes" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>Parish</p>
                         </a>
@@ -145,7 +161,7 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="PostalCode" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Postal Codes" asp-route-apicall="TablePostalCodes" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>Postal Code</p>
                         </a>
@@ -153,7 +169,7 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="PostOffice" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Post Offices" asp-route-apicall="TablePostOffices" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>Post Office</p>
                         </a>
@@ -161,16 +177,15 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="Street" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Streets" asp-route-apicall="TableStreets" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>Street</p>
                         </a>
                     </li>
                 </ul>
-
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="TaskPriority" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Task Priorities" asp-route-apicall="TableTaskPriorities" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>Task Priority</p>
                         </a>
@@ -178,7 +193,7 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="TaskReferenceType" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Task Reference Types" asp-route-apicall="TableTaskReferenceTypes" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>Task Reference Type</p>
                         </a>
@@ -186,7 +201,7 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="TaskStatus" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Task Status" asp-route-apicall="TableStatuses" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>Task Status</p>
                         </a>
@@ -194,13 +209,12 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a is-active-page asp-area="SystemTables" asp-controller="TaskType" asp-action="Index" class="nav-link">
+                        <a is-active-page asp-area="SystemTables" asp-controller="TableAdmin" asp-action="Index" asp-route-title="Task Types" asp-route-apicall="TableTaskTypes" class="nav-link">
                             <i class="fas fa-edit nav-icon"></i>
                             <p>Task Type</p>
                         </a>
                     </li>
                 </ul>
-
 
             </li>
 

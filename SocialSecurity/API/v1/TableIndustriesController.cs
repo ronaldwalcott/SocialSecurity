@@ -7,25 +7,25 @@ using SocialSecurity.Data;
 using SocialSecurity.Domain.ODataModels.SystemTables;
 using SocialSecurity.Domain.Actions;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SocialSecurity.Data.EFClasses.SystemTables;
 using SocialSecurityAPI.Helpers;
 using SocialSecurity.Domain.Constants;
 using SocialSecurity.Domain.Models;
+using System.Collections.Generic;
 
 namespace SocialSecurityAPI.API.v1
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    public class TableCountriesController : ControllerBase //ODataController
+    public class TableIndustriesController : ControllerBase //ODataController
     {
 
-        private readonly ILogger<TableCountriesController> _logger;
+        private readonly ILogger<TableIndustriesController> _logger;
         private readonly SocialSecurityDbContext _context;
         private readonly IDateTimeUtc _dateTime;
-        public TableCountriesController(SocialSecurityDbContext dbContext, ILogger<TableCountriesController> logger, IDateTimeUtc dateTimeUtc)
+        public TableIndustriesController(SocialSecurityDbContext dbContext, ILogger<TableIndustriesController> logger, IDateTimeUtc dateTimeUtc)
         {
             _context = dbContext;
             _logger = logger;
@@ -36,14 +36,14 @@ namespace SocialSecurityAPI.API.v1
         [HttpGet]
         public async Task<ActionResult<IEnumerable<GeneralTable>>> Get()
         {
-            var tableResults = await _context.TableCountries.Select(t => new GeneralTable() { ID = t.ID, Code = t.Code, ShortDescription = t.ShortDescription, LongDescription = t.LongDescription }).ToListAsync();
+            var tableResults = await _context.TableIndustries.Select(t => new GeneralTable() { ID = t.ID, Code = t.Code, ShortDescription = t.ShortDescription, LongDescription = t.LongDescription }).ToListAsync();
             return tableResults;
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<GeneralGetTable>> Get(long id)
         {
-            var tableResults = await _context.TableCountries.FindAsync(id);
+            var tableResults = await _context.TableIndustries.FindAsync(id);
             if (tableResults == null)
             {
                 return NotFound();
@@ -67,7 +67,7 @@ namespace SocialSecurityAPI.API.v1
             UserClaim userClaim = new UserClaim();
             UserData userData = userClaim.Claims(User);
 
-            var table = new TableCountry();
+            var table = new TableIndustry();
             table.CreatedBy = userData.UserName;
             table.CreatedById = userData.UserId;
             table.CreatedDateTimeUtc = _dateTime.Now;
@@ -77,16 +77,16 @@ namespace SocialSecurityAPI.API.v1
 
             try
             {
-                _context.TableCountries.Add(table);
+                _context.TableIndustries.Add(table);
                 await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                _logger.LogError(LoggingEvents.TableConfiguration, LoggingErrorText.errorSavingTableData, "Countries", userData.UserName, ex.Message);
+                _logger.LogError(LoggingEvents.TableConfiguration, LoggingErrorText.errorSavingTableData, "Industries", userData.UserName, ex.Message);
                 throw;
             }
 
-            return CreatedAtAction("Get", new { id = table.ID}, table);
+            return CreatedAtAction("Get", new { id = table.ID }, table);
         }
 
         [HttpPut]
@@ -97,7 +97,7 @@ namespace SocialSecurityAPI.API.v1
                 return BadRequest();
             }
 
-            var table = _context.TableCountries.Find(key);
+            var table = _context.TableIndustries.Find(key);
             if (table == null)
             {
                 return NotFound();
@@ -113,7 +113,7 @@ namespace SocialSecurityAPI.API.v1
 
             try
             {
-                _context.TableCountries.Update(table);
+                _context.TableIndustries.Update(table);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException ex)
@@ -124,13 +124,13 @@ namespace SocialSecurityAPI.API.v1
                 }
                 else
                 {
-                    _logger.LogError(LoggingEvents.TableConfiguration, LoggingErrorText.concurrencyError, "Countries", userData.UserName, ex.Message);
+                    _logger.LogError(LoggingEvents.TableConfiguration, LoggingErrorText.concurrencyError, "Industries", userData.UserName, ex.Message);
                     throw;
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                _logger.LogError(LoggingEvents.TableConfiguration, LoggingErrorText.errorSavingTableData, "Countries", userData.UserName, ex.Message);
+                _logger.LogError(LoggingEvents.TableConfiguration, LoggingErrorText.errorSavingTableData, "Industries", userData.UserName, ex.Message);
                 throw;
             }
             return NoContent();
@@ -138,7 +138,7 @@ namespace SocialSecurityAPI.API.v1
 
         private bool TableExists(long id)
         {
-            return _context.TableCountries.Any(e => e.ID == id);
+            return _context.TableIndustries.Any(e => e.ID == id);
         }
 
     }

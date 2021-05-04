@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SocialSecurity.Domain.Models
+namespace SocialSecurity.Domain.Actions
 {
     public class GetGeneralTableData
     {
