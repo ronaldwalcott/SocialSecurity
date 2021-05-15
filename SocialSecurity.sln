@@ -15,7 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministrationUI", "AdministrationUI\AdministrationUI.csproj", "{8E402680-0B4C-4C36-A03A-0081B80D9C1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdministrationUI", "AdministrationUI\AdministrationUI.csproj", "{8E402680-0B4C-4C36-A03A-0081B80D9C1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteAgent", "RemoteAgent\RemoteAgent.csproj", "{EC0CA145-2ABE-43CA-B135-0F592CB85F58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{8E402680-0B4C-4C36-A03A-0081B80D9C1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E402680-0B4C-4C36-A03A-0081B80D9C1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E402680-0B4C-4C36-A03A-0081B80D9C1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC0CA145-2ABE-43CA-B135-0F592CB85F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC0CA145-2ABE-43CA-B135-0F592CB85F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC0CA145-2ABE-43CA-B135-0F592CB85F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC0CA145-2ABE-43CA-B135-0F592CB85F58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

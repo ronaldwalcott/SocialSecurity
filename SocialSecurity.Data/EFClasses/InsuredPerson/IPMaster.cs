@@ -31,6 +31,7 @@ namespace SocialSecurity.Data.EFClasses.InsuredPerson
         public IPContact IPContact { get; set; }
         public ICollection<IPRegEmployer> IPRegEmployers { get; set; }
         public ICollection<IPRegistrationDocument> IPRegistrationDocuments { get; set; }
+        public ICollection<IPNote> IPNotes { get; set; }
         public IPSpouse IPSpouse { get; set; }
 
         public DateTimeOffset? ApprovedDate { get; set; }

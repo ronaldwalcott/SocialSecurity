@@ -26,6 +26,7 @@ namespace AdministrationUI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IAuthToken, AuthToken>();
+//            services.AddTransient<IAuthToken, AuthToken>();
 
             services.AddControllersWithViews().AddNewtonsoftJson(options =>
             {

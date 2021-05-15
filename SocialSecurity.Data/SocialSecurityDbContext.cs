@@ -44,6 +44,7 @@ namespace SocialSecurity.Data
         public DbSet<ERContact> ERContacts { get; set; }
         public DbSet<ERDirector> ERDirectors { get; set; }
         public DbSet<ERMaster> ERMasters { get; set; }
+        public DbSet<ERNote> ERNotes { get; set; }
 
         public DbSet<IPAddress> IPAddresses { get; set; }
         public DbSet<IPAddressApproved> IPAddressApproveds { get; set; }
@@ -55,6 +56,7 @@ namespace SocialSecurity.Data
         public DbSet<IPRegEmployer> IPRegEmployers { get; set; }
         public DbSet<IPRegistrationDocument> IPRegistrationDocuments { get; set; }
         public DbSet<IPSpouse> IPSpouses { get; set; }
+        public DbSet<IPNote> IPNotes { get; set; }
 
 
         public DbSet<PersonTask> PersonTasks { get; set; }
@@ -89,6 +91,7 @@ namespace SocialSecurity.Data
             modelBuilder.Entity<ERContact>().ToTable("ERContact");
             modelBuilder.Entity<ERDirector>().ToTable("ERDirector");
             modelBuilder.Entity<ERMaster>().ToTable("ERMaster");
+            modelBuilder.Entity<ERNote>().ToTable("ERNote");
 
             modelBuilder.Entity<IPAddress>().ToTable("IPAddress");
             modelBuilder.Entity<IPAddressApproved>().ToTable("IPAddressApproved");
@@ -101,6 +104,7 @@ namespace SocialSecurity.Data
             modelBuilder.Entity<IPRegistrationDocument>().ToTable("IPRegistrationDocument");
             modelBuilder.Entity<IPSpouse>().ToTable("IPSpouse");
             modelBuilder.Entity<IPSSN>().ToTable("IPSSN");
+            modelBuilder.Entity<IPNote>().ToTable("IPNote");
 
 
             modelBuilder.Entity<TableCountry>()

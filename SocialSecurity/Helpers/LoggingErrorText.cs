@@ -12,5 +12,7 @@ namespace SocialSecurityAPI.Helpers
         public const string recordChanged = "Record has been changed since it was retrieved for editing, please retrieve the new record for editing";
         public const string errorSavingTableData = "Errors generated trying to save table data {tableData} by {username} {errorMessage}";
         public const string concurrencyError = "Concurrency error saving table data {tableData} by {username} {errorMessage}";
+        public const string errorSavingTaskData = "Errors generated trying to save tasks {tableData} by {username} {errorMessage}";
+
     }
 }

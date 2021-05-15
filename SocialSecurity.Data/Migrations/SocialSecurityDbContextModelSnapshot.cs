@@ -477,6 +477,69 @@ namespace SocialSecurity.Data.Migrations
                     b.ToTable("ERMaster");
                 });
 
+            modelBuilder.Entity("SocialSecurity.Data.EFClasses.Employer.ERNote", b =>
+                {
+                    b.Property<long>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Action")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedById")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("CreatedDateTimeUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DeletedById")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("DeletedDateTimeUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<long>("ERMasterID")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedById")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("ModifiedDateTimeUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Note")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTimeOffset>("NoteDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<byte[]>("Timestamp")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ERMasterID");
+
+                    b.ToTable("ERNote");
+                });
+
             modelBuilder.Entity("SocialSecurity.Data.EFClasses.InsuredPerson.IPAddress", b =>
                 {
                     b.Property<long>("ID")
@@ -1016,6 +1079,69 @@ namespace SocialSecurity.Data.Migrations
                     b.HasIndex("Surname", "FirstName", "MiddleName");
 
                     b.ToTable("IPMaster");
+                });
+
+            modelBuilder.Entity("SocialSecurity.Data.EFClasses.InsuredPerson.IPNote", b =>
+                {
+                    b.Property<long>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Action")
+                        .HasMaxLength(1)
+                        .HasColumnType("nvarchar(1)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CreatedById")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("CreatedDateTimeUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("DeletedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DeletedById")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("DeletedDateTimeUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<long>("InsuredPersonID")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ModifiedById")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTimeOffset?>("ModifiedDateTimeUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Note")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<DateTimeOffset>("NoteDate")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<byte[]>("Timestamp")
+                        .IsConcurrencyToken()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("InsuredPersonID");
+
+                    b.ToTable("IPNote");
                 });
 
             modelBuilder.Entity("SocialSecurity.Data.EFClasses.InsuredPerson.IPOccupationApproved", b =>
@@ -2771,6 +2897,17 @@ namespace SocialSecurity.Data.Migrations
                     b.Navigation("ERMaster");
                 });
 
+            modelBuilder.Entity("SocialSecurity.Data.EFClasses.Employer.ERNote", b =>
+                {
+                    b.HasOne("SocialSecurity.Data.EFClasses.Employer.ERMaster", "ERMaster")
+                        .WithMany("ERNotes")
+                        .HasForeignKey("ERMasterID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ERMaster");
+                });
+
             modelBuilder.Entity("SocialSecurity.Data.EFClasses.InsuredPerson.IPAddress", b =>
                 {
                     b.HasOne("SocialSecurity.Data.EFClasses.SystemTables.TableDistrict", "District")
@@ -2909,6 +3046,17 @@ namespace SocialSecurity.Data.Migrations
                     b.Navigation("IPSSN");
                 });
 
+            modelBuilder.Entity("SocialSecurity.Data.EFClasses.InsuredPerson.IPNote", b =>
+                {
+                    b.HasOne("SocialSecurity.Data.EFClasses.InsuredPerson.IPMaster", "IPMaster")
+                        .WithMany("IPNotes")
+                        .HasForeignKey("InsuredPersonID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("IPMaster");
+                });
+
             modelBuilder.Entity("SocialSecurity.Data.EFClasses.InsuredPerson.IPRegEmployer", b =>
                 {
                     b.HasOne("SocialSecurity.Data.EFClasses.SystemTables.TableDistrict", "District")
@@ -2987,6 +3135,8 @@ namespace SocialSecurity.Data.Migrations
                     b.Navigation("ERContact");
 
                     b.Navigation("ERDirectors");
+
+                    b.Navigation("ERNotes");
                 });
 
             modelBuilder.Entity("SocialSecurity.Data.EFClasses.InsuredPerson.IPMaster", b =>
@@ -2996,6 +3146,8 @@ namespace SocialSecurity.Data.Migrations
                     b.Navigation("IPBasic");
 
                     b.Navigation("IPContact");
+
+                    b.Navigation("IPNotes");
 
                     b.Navigation("IPRegEmployers");
 

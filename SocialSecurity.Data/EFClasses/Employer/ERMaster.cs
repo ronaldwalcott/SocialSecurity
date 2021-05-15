@@ -24,6 +24,7 @@ namespace SocialSecurity.Data.EFClasses.Employer
         public ERBasic2 ERBasic2 { get; set; }
         public ERContact ERContact { get; set; }
         public ICollection<ERDirector> ERDirectors { get; set; }
+        public ICollection<ERNote> ERNotes { get; set; }
 
         public DateTimeOffset? ApprovedDate { get; set; }
         public string ApprovedBy { get; set; }
